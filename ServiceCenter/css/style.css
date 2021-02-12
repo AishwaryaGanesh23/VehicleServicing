@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.form-section {
+  width: 200%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-section input {
+  height: 100%;
+  width: 100%;
+  color: #595f6e;
+  padding-top: 20px;
+  border: none;
+  outline: none;
+}
+
+.form-section label {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 1px solid black;
+  pointer-events: none;
+}
+
+.form-section label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid red;
+  left: 0px;
+  bottom: -1px;
+  transform: translateX(-100%);
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form-section input:focus + .label-name .content-name,
+.form-section input:valid + .label-name .content-name {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #5fa8d3;
+}
+
+.form-section input:focus + .label-name::after,
+.form-section input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+input[type="date"]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
+}
+input[type="date"]:focus::-webkit-datetime-edit {
+  color: black !important;
+}
