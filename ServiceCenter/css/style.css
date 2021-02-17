@@ -1,12 +1,11 @@
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
 }
 
 body {
-  height: 60vh;
-  background-color: #d9d7d7;
+  background-image: url("https://www.mastermechanic.ca/blog/wp-content/uploads/2016/06/servicing.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .img img {
@@ -20,23 +19,38 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: sans-serif;
+  margin-top:2rem;
 }
 
 .form-section {
-  width: 200%;
-  height: 50px;
+  width: 100%;
+  height: 4.5rem;
   position: relative;
   overflow: hidden;
+}
+
+.form-appt{
+  width: 50%;
+  max-width: 500px;
+  padding: 15px;
+  border: 5px solid white;
+  border-radius: 6px;
+  background:rgb(255, 255, 255, 0.9);
+}
+
+.form-pos{
+  margin: 30rem 30rem;
 }
 
 .form-section input {
   height: 100%;
   width: 100%;
-  color: #595f6e;
+  color: red;
   padding-top: 20px;
   border: none;
   outline: none;
-  background-color: #d9d7d7;
+  border-radius:10px;
+  background-color:rgb(255, 255, 255,0.2);
 }
 
 .form-section label {
@@ -59,6 +73,7 @@ body {
   bottom: -1px;
   transform: translateX(-100%);
 }
+
 
 .content-name {
   position: absolute;
