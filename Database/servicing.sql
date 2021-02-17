@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2021 at 08:14 AM
+-- Generation Time: Feb 17, 2021 at 05:37 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -32,7 +32,7 @@ CREATE TABLE `appointment` (
   `appointment_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
+  `date` date NOT NULL,
   `kilometers_run` int(11) NOT NULL,
   `pick_drop_opted` varchar(5) NOT NULL,
   `description` varchar(200) NOT NULL
@@ -84,7 +84,8 @@ CREATE TABLE `services_offered` (
 CREATE TABLE `vehicles` (
   `vehicle_id` int(11) NOT NULL,
   `vehicle_model` varchar(50) NOT NULL,
-  `vehicle_registration_no` int(11) NOT NULL
+  `vehicle_registration_no` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,7 +123,8 @@ ALTER TABLE `services_offered`
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  ADD PRIMARY KEY (`vehicle_id`);
+  ADD PRIMARY KEY (`vehicle_id`),
+  ADD KEY `customervehicle_fk` (`customer_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -169,6 +171,12 @@ ALTER TABLE `appointment`
 ALTER TABLE `opted_services`
   ADD CONSTRAINT `appointment_fk` FOREIGN KEY (`appointment_id`) REFERENCES `appointment` (`appointment_id`),
   ADD CONSTRAINT `service_fk` FOREIGN KEY (`service_id`) REFERENCES `services_offered` (`service_id`);
+
+--
+-- Constraints for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD CONSTRAINT `customervehicle_fk` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
