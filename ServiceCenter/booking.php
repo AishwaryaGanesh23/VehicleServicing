@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+require 'db.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,125 +35,132 @@
 <body>
 
     <div class="container">
-      <form id="" method="post" class="form-appt">
+        <form id="" method="post" class="form-appt">
 
-          <div class="form-section">
-              <input type="text" name="name" autocomplete="off" required />
-              <label for="name" class="label-name">
-                  <span class="content-name">Name</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="tel" name="contact" id="contact" required />
-              <label for="contact" class="label-name">
-                  <span class="content-name">Contact</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="text" name="address" id="address" required />
-              <label for="address" class="label-name">
-                  <span class="content-name">Address</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="email" name="email" id="email" required />
-              <label for="email" class="label-name">
-                  <span class="content-name">Email Address</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="text" name="model" id="model" required />
-              <label for="model" class="label-name">
-                  <span class="content-name">Vehicle Model</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="text" name="reg" id="reg" required />
-              <label for="reg" class="label-name">
-                  <span class="content-name">Vehicle Registration</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="number" name="distance" id="distance" required />
-              <label for="distance" class="label-name">
-                  <span class="content-name">Total Kilometers</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-section">
-              <input type="date" name="date" id="date" onfocus="(this.type='date')" onfocusout="(this.type='text')" required />
-              <label for="date" class="label-name">
-                  <span class="content-name">Appointment Date</span>
-              </label>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-
-          <div class="form-group">
-              <label>Services:</label>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1">Option 1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                  <label class="form-check-label" for="inlineCheckbox2">Option 2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-                  <label class="form-check-label" for="inlineCheckbox3">Option 2</label>
-              </div>
-              <span class="" id=""></span>
-          </div>
-          <br>
-          <br>
-
-          <div class="form-group">
-              <label for="desc">Specific Request:</label>
-              <span class="" id=""></span>
-              <br>
-              <br>
-              <textarea rows="4" cols="40" name="address" id="address" required></textarea>
-              </div>
-              <br>
-              <br>
-
-              <button type="submit" class="btn btn-success btn-lg" name="addAppt" id="submit">Place Appointment</button>
-
-      </form>
-
+            <div class="form-section">
+                <input type="text" name="name" autocomplete="off" required />
+                <label for="name" class="label-name">
+                    <span class="content-name">Name</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
             <br>
             <br>
+
+            <div class="form-section">
+                <input type="tel" name="contact" id="contact" required />
+                <label for="contact" class="label-name">
+                    <span class="content-name">Contact</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
             <br>
+            <br>
+
+            <div class="form-section">
+                <input type="text" name="address" id="address" required />
+                <label for="address" class="label-name">
+                    <span class="content-name">Address</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-section">
+                <input type="email" name="email" id="email" required />
+                <label for="email" class="label-name">
+                    <span class="content-name">Email Address</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-section">
+                <input type="text" name="model" id="model" required />
+                <label for="model" class="label-name">
+                    <span class="content-name">Vehicle Model</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-section">
+                <input type="text" name="reg" id="reg" required />
+                <label for="reg" class="label-name">
+                    <span class="content-name">Vehicle Registration</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-section">
+                <input type="number" name="distance" id="distance" required />
+                <label for="distance" class="label-name">
+                    <span class="content-name">Total Kilometers</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-section">
+                <input type="date" name="date" id="date" onfocus="(this.type='date')" onfocusout="(this.type='text')" required />
+                <label for="date" class="label-name">
+                    <span class="content-name">Appointment Date</span>
+                </label>
+                <span class="" id=""></span>
+            </div>
+            <br>
+            <br>
+
+
+            <div class="form-group">
+                <label>Services:</label>
+                <ul class="list-group">
+                    <?php
+                    $sql = "SELECT DISTINCT service_name FROM services_offered ORDER BY service_name";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                    ?>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input product_check" value="<?= $row['service_name']; ?>" id="service_name"><?= $row['service_name']; ?>
+
+                                </label>
+                            </div>
+
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group">
+                <label for="desc">Specific Request:</label>
+                <span class="" id=""></span>
+                <br>
+                <br>
+                <textarea rows="4" cols="40" name="address" id="address" required></textarea>
+            </div>
+            <br>
+            <br>
+
+            <button type="submit" class="btn btn-success btn-lg" name="addAppt" id="submit">Place Appointment</button>
+
+        </form>
+
+        <br>
+        <br>
+        <br>
     </div>
 
 
