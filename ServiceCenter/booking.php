@@ -23,6 +23,8 @@ require 'db.php';
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/40419ae504.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -108,8 +110,8 @@ require 'db.php';
             <br>
 
             <div class="form-section">
-                <input type="date" name="date" id="date" onfocus="(this.type='date')" onfocusout="(this.type='text')" required />
-                <label for="date" class="label-name">
+                <input type="text" id="datepick" required />
+                <label for=" date" class="label-name">
                     <span class="content-name">Appointment Date</span>
                 </label>
                 <span class="" id=""></span>
@@ -166,24 +168,30 @@ require 'db.php';
 
 
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <script>
         $(document).ready(function() {
 
-            var dtToday = new Date();
+            $(function() {
 
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
-
-            var maxDate = year + '-' + month + '-' + day;
-
-            $('#date').attr('min', maxDate);
-
-        })
+                dateRange = [];
+                var today = new Date();
+                $('#datepick').datepicker({
+                    minDate: today,
+                    beforeShowDay: function(date) {
+                        var dateString = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                        var day = date.getDay();
+                        if (day == 0 || dateRange.indexOf(dateString) != -1) {
+                            return [false, "busy"]
+                        } else {
+                            return [true, "free"]
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
