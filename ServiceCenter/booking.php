@@ -176,7 +176,21 @@ require 'db.php';
 
             $(function() {
 
-                dateRange = [];
+                dateRange = [
+                  <?php
+
+                  $sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >1";
+                  $result2 = $conn->query($sql2);
+
+                  while ($row2 = $result2->fetch_assoc())
+                  {
+                    $date_echo = $row2["date_booking"];
+                    $date_disable = date("d-m-Y", strtotime($date_echo));
+                    echo "'$date_disable',";
+                  }
+                   ?>
+
+                ];
                 var today = new Date();
                 $('#datepick').datepicker({
                     minDate: today,

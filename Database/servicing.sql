@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 05:37 PM
+-- Generation Time: Feb 19, 2021 at 04:16 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -32,11 +32,20 @@ CREATE TABLE `appointment` (
   `appointment_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date_booking` date NOT NULL,
   `kilometers_run` int(11) NOT NULL,
   `pick_drop_opted` varchar(5) NOT NULL,
   `description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`appointment_id`, `customer_id`, `vehicle_id`, `date_booking`, `kilometers_run`, `pick_drop_opted`, `description`) VALUES
+(1, 1, 2, '2021-02-24', 2000, 'no', 'krkrkr noise pls fix'),
+(2, 2, 1, '2021-02-24', 5000, 'no', 'light'),
+(3, 2, 1, '2021-02-20', 5010, 'no', 'brake loose');
 
 -- --------------------------------------------------------
 
@@ -52,6 +61,14 @@ CREATE TABLE `customers` (
   `customer_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_phno`, `customer_email`, `customer_address`) VALUES
+(1, 'Aishwarya', '7778789997', 'aishwarya@gmail.com', 'porvorim'),
+(2, 'Melrick', '9994562898', 'melrick@gmail.com', 'mapusa');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +79,13 @@ CREATE TABLE `opted_services` (
   `appointment_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `opted_services`
+--
+
+INSERT INTO `opted_services` (`appointment_id`, `service_id`) VALUES
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -75,6 +99,15 @@ CREATE TABLE `services_offered` (
   `service_price` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `services_offered`
+--
+
+INSERT INTO `services_offered` (`service_id`, `service_name`, `service_price`) VALUES
+(1, 'Bike Wash', '100'),
+(2, 'Air Check', '10'),
+(3, 'Nitrogen', '50');
+
 -- --------------------------------------------------------
 
 --
@@ -84,9 +117,17 @@ CREATE TABLE `services_offered` (
 CREATE TABLE `vehicles` (
   `vehicle_id` int(11) NOT NULL,
   `vehicle_model` varchar(50) NOT NULL,
-  `vehicle_registration_no` int(11) NOT NULL,
+  `vehicle_registration_no` varchar(10) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vehicles`
+--
+
+INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `vehicle_registration_no`, `customer_id`) VALUES
+(1, 'vespa', 'ga051235', 2),
+(2, 'Activa', 'ga054667', 1);
 
 --
 -- Indexes for dumped tables
@@ -134,25 +175,25 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `services_offered`
 --
 ALTER TABLE `services_offered`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
