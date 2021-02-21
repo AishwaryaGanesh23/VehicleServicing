@@ -1,19 +1,40 @@
 $(document).ready(function(){
+
+    
+
+    var thisIsMyJSVar = '<? $sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >1"; $result2 = $connect->query($sql2); while ($row2 = $result2->fetch_assoc()){ $date_echo = $row2["date_booking"]; $date_disable = date("Y-m-d", strtotime($date_echo)); echo ""$date_disable","; } ?>';
+
+    dateRange = [thisIsMyJSVar];
+    var today = new Date();
+    $('#datepick').datepicker({
+        dateFormat:'yy/mm/dd',
+        minDate: today,
+        beforeShowDay: function(date) {
+            var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
+            var day = date.getDay();
+            if (day == 0 || dateRange.indexOf(dateString) != -1) {
+                return [false, "busy"]
+            } else {
+                return [true, "free"]
+            }
+        }
+    });
+    
     
     var maxLimit = 200;
-    $(document).ready(function () {
-        $('#desc').keyup(function () {
-            var lengthCount = this.value.length;              
-            if (lengthCount > maxLimit) {
-                this.value = this.value.substring(0, maxLimit);
-                var charactersLeft = maxLimit - lengthCount + 1;                   
-            }
-            else {                   
-                var charactersLeft = maxLimit - lengthCount;                   
-            }
-            $('#charsleft').text(charactersLeft + ' Characters left');
-        });
+    
+    $('#desc').keyup(function () {
+        var lengthCount = this.value.length;              
+        if (lengthCount > maxLimit) {
+            this.value = this.value.substring(0, maxLimit);
+            var charactersLeft = maxLimit - lengthCount + 1;                   
+        }
+        else {                   
+            var charactersLeft = maxLimit - lengthCount;                   
+        }
+        $('#charsleft').text(charactersLeft + ' Characters left');
     });
+    
 
     $("#submit").on('click',function(e){
         // alert("clicked");
@@ -157,7 +178,6 @@ $(document).ready(function(){
             values.push(checkbox.value);
         });
 
-        alert('js date '.datestring);
         // alert("making call");     
 
         if(flag == -1)
