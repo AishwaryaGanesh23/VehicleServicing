@@ -17,7 +17,7 @@ $date = str_replace('/', '-', $date);
 
 $chk_app_sql = mysqli_query($connect,"select * from appointment where date_booking='$date' and vehicle_id = (select vehicle_id from vehicles where vehicle_registration_no='$regno')");
 if(mysqli_num_rows($chk_app_sql) > 0){
-    $response_array['status']='exists';
+    $response_array['status']='This appointment is already booked.';
 }
 else{
 
@@ -49,7 +49,7 @@ else{
                                 $a_id = $app_data['appointment_id'];
                                 $services_sql = mysqli_query($connect,"insert into opted_services values('$a_id','$s_id')");
                                 if($services_sql){
-                                    $response_array['status']='success';
+                                    $response_array['status']='Appointment Booked Successfully';
                                 }
                                 else{
                                     $response_array['status']='err_4';
@@ -71,13 +71,12 @@ else{
             }
         }
         else{
-            $response_array['status']='veh';
+            $response_array['status']=$regno.' vehicle is not registered.Kindly register the vehicle in your profile.';
         }
-    
-    
+
     }
     else{
-        $response_array['status']='cust';
+        $response_array['status']='User named '.$name.' not found. Kindly register in the System.';
     }
 
 }

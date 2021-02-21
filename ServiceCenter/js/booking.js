@@ -196,24 +196,18 @@ $(document).ready(function(){
                     values: values
                 },
                 success:function(result){
-                    alert(result);
-                    // if(result.status=='fail'){
-                      
-                    // }
-                    // else if(result.status=='failure'){
-                       
-                    // }
-                    // else if(result.status=='success'){
-                       
-    
-                    // }
+                    alert(result.status);
+                    var resp = result.status;
+                    if(resp == 'success'){
+                        window.open("index.php","_self")
+                    }
+
                 },
                 error: function(xhr, status, error) {
                     alert("error: ".error);
                 },
                 dataType: 'text'
             })
-            // alert("after call")
         }
 
     })
