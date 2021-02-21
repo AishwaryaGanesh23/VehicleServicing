@@ -2,7 +2,7 @@
 
 session_start();
 
-require 'db.php';
+require 'config/connect.php';
 
 ?>
 <!DOCTYPE html>
@@ -26,9 +26,10 @@ require 'db.php';
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/booking.js"></script>
 
 
     <title>Animation</title>
@@ -40,12 +41,13 @@ require 'db.php';
         <form id="" method="post" class="form-appt">
 
             <div class="form-section">
-                <input type="text" name="name" autocomplete="off" required />
+                <input type="text" name="name" id="name" autocomplete="off" required />
                 <label for="name" class="label-name">
                     <span class="content-name">Name</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="ername"></span>
             <br>
             <br>
 
@@ -54,8 +56,9 @@ require 'db.php';
                 <label for="contact" class="label-name">
                     <span class="content-name">Contact</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="ercontact"></span>
             <br>
             <br>
 
@@ -64,8 +67,9 @@ require 'db.php';
                 <label for="address" class="label-name">
                     <span class="content-name">Address</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="eraddress"></span>
             <br>
             <br>
 
@@ -74,8 +78,9 @@ require 'db.php';
                 <label for="email" class="label-name">
                     <span class="content-name">Email Address</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="eremail"></span>
             <br>
             <br>
 
@@ -84,8 +89,9 @@ require 'db.php';
                 <label for="model" class="label-name">
                     <span class="content-name">Vehicle Model</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="ermodel"></span>
             <br>
             <br>
 
@@ -94,8 +100,9 @@ require 'db.php';
                 <label for="reg" class="label-name">
                     <span class="content-name">Vehicle Registration</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="erreg"></span>
             <br>
             <br>
 
@@ -104,8 +111,9 @@ require 'db.php';
                 <label for="distance" class="label-name">
                     <span class="content-name">Total Kilometers</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="erdistance"></span>
             <br>
             <br>
 
@@ -114,8 +122,9 @@ require 'db.php';
                 <label for=" date" class="label-name">
                     <span class="content-name">Appointment Date</span>
                 </label>
-                <span class="" id=""></span>
+                
             </div>
+            <span class="errmsg" id="erdatepick"></span>
             <br>
             <br>
 
@@ -125,17 +134,16 @@ require 'db.php';
                 <ul class="list-group">
                     <?php
                     $sql = "SELECT DISTINCT service_name FROM services_offered ORDER BY service_name";
-                    $result = $conn->query($sql);
+                    $result = $connect->query($sql);
                     while ($row = $result->fetch_assoc()) {
                     ?>
                         <li class="list-group-item">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input product_check" value="<?= $row['service_name']; ?>" id="service_name"><?= $row['service_name']; ?>
+                                    <input type="checkbox" class="form-check-input product_check" value="<?= $row['service_name']; ?>" name="service_name" id="service_name"><?= $row['service_name']; ?>
 
                                 </label>
                             </div>
-
                         </li>
                     <?php
                     }
@@ -148,11 +156,12 @@ require 'db.php';
 
             <div class="form-group">
                 <label for="desc">Specific Request:</label>
-                <span class="" id=""></span>
                 <br>
                 <br>
-                <textarea rows="4" cols="40" name="address" id="address" required></textarea>
+                <textarea rows="4" cols="40" name="desc" id="desc" required autocomplete="off"></textarea>
             </div>
+            <span class="chars_left" id="charsleft"></span>
+            <span class="errmsg" id="erdesc"></span>
             <br>
             <br>
 
@@ -168,8 +177,8 @@ require 'db.php';
 
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/jquery_1.js"></script>
+    <script src="js/jquery_ui.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -180,7 +189,7 @@ require 'db.php';
                   <?php
 
                   $sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >1";
-                  $result2 = $conn->query($sql2);
+                  $result2 = $connect->query($sql2);
 
                   while ($row2 = $result2->fetch_assoc())
                   {

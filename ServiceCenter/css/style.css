@@ -100,3 +100,24 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
 input[type="date"]:focus::-webkit-datetime-edit {
   color: black !important;
 }
+
+.form-section.errmsg{
+  position: absolute;
+  font-size: medium;
+  height: auto;
+  width: 100%;
+  bottom: 5px;
+  left: 0px;
+}
+
+.errmsg{
+  font-size: small;
+  font-style: italic;
+  color: rgb(255, 0, 0);
+}
+
+.chars_left{
+  position: absolute;
+  font-size: small;
+  font-style: italic;
+}
