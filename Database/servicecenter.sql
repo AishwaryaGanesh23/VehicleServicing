@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 11:05 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Feb 21, 2021 at 11:29 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -53,7 +54,9 @@ INSERT INTO `appointment` (`appointment_id`, `customer_id`, `vehicle_id`, `date_
 (21, 3, 3, '2021-02-25', 20, 'no', ''),
 (22, 3, 3, '2021-02-25', 20, 'no', ''),
 (23, 3, 3, '2021-02-27', 20, 'no', ''),
-(24, 3, 3, '2021-03-03', 30, 'no', '');
+(24, 3, 3, '2021-03-03', 30, 'no', ''),
+(25, 1, 2, '2021-02-23', 5026, 'no', 'light broke'),
+(26, 1, 2, '2021-02-25', 5026, 'no', 'light broke again');
 
 -- --------------------------------------------------------
 
@@ -85,6 +88,7 @@ INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_phno`, `custo
 --
 
 CREATE TABLE `opted_services` (
+  `os_id` int(11) NOT NULL,
   `appointment_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -93,26 +97,29 @@ CREATE TABLE `opted_services` (
 -- Dumping data for table `opted_services`
 --
 
-INSERT INTO `opted_services` (`appointment_id`, `service_id`) VALUES
-(2, 2),
-(13, 2),
-(13, 1),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 1),
-(13, 3),
-(13, 2),
-(13, 1);
+INSERT INTO `opted_services` (`os_id`, `appointment_id`, `service_id`) VALUES
+(1, 2, 2),
+(2, 13, 2),
+(3, 13, 1),
+(4, 13, 1),
+(5, 13, 3),
+(6, 13, 1),
+(7, 13, 3),
+(8, 13, 1),
+(9, 13, 3),
+(10, 13, 1),
+(11, 13, 3),
+(12, 13, 1),
+(13, 13, 3),
+(14, 13, 1),
+(15, 13, 3),
+(16, 13, 1),
+(17, 13, 3),
+(18, 13, 2),
+(19, 13, 1),
+(20, 1, 2),
+(21, 1, 2),
+(22, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -179,6 +186,7 @@ ALTER TABLE `customers`
 -- Indexes for table `opted_services`
 --
 ALTER TABLE `opted_services`
+  ADD PRIMARY KEY (`os_id`),
   ADD KEY `appointment_fk` (`appointment_id`),
   ADD KEY `service_fk` (`service_id`);
 
@@ -203,13 +211,19 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `opted_services`
+--
+ALTER TABLE `opted_services`
+  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `services_offered`

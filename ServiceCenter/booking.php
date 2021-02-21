@@ -45,7 +45,7 @@ require 'config/connect.php';
                 <label for="name" class="label-name">
                     <span class="content-name">Name</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="ername"></span>
             <br>
@@ -56,7 +56,7 @@ require 'config/connect.php';
                 <label for="contact" class="label-name">
                     <span class="content-name">Contact</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="ercontact"></span>
             <br>
@@ -67,7 +67,7 @@ require 'config/connect.php';
                 <label for="address" class="label-name">
                     <span class="content-name">Address</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="eraddress"></span>
             <br>
@@ -78,7 +78,7 @@ require 'config/connect.php';
                 <label for="email" class="label-name">
                     <span class="content-name">Email Address</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="eremail"></span>
             <br>
@@ -89,7 +89,7 @@ require 'config/connect.php';
                 <label for="model" class="label-name">
                     <span class="content-name">Vehicle Model</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="ermodel"></span>
             <br>
@@ -100,7 +100,7 @@ require 'config/connect.php';
                 <label for="reg" class="label-name">
                     <span class="content-name">Vehicle Registration</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="erreg"></span>
             <br>
@@ -111,7 +111,7 @@ require 'config/connect.php';
                 <label for="distance" class="label-name">
                     <span class="content-name">Total Kilometers</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="erdistance"></span>
             <br>
@@ -122,7 +122,7 @@ require 'config/connect.php';
                 <label for=" date" class="label-name">
                     <span class="content-name">Appointment Date</span>
                 </label>
-                
+
             </div>
             <span class="errmsg" id="erdatepick"></span>
             <br>
@@ -178,8 +178,5 @@ require 'config/connect.php';
     <script src="js/jquery_ui.js"></script>
 
 </body>
-
-
-
 
 </html>
