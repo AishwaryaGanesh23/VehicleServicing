@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 04:16 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Feb 21, 2021 at 11:05 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `servicing`
+-- Database: `servicecenter`
 --
 
 -- --------------------------------------------------------
@@ -45,7 +44,16 @@ CREATE TABLE `appointment` (
 INSERT INTO `appointment` (`appointment_id`, `customer_id`, `vehicle_id`, `date_booking`, `kilometers_run`, `pick_drop_opted`, `description`) VALUES
 (1, 1, 2, '2021-02-24', 2000, 'no', 'krkrkr noise pls fix'),
 (2, 2, 1, '2021-02-24', 5000, 'no', 'light'),
-(3, 2, 1, '2021-02-20', 5010, 'no', 'brake loose');
+(3, 2, 1, '2021-02-20', 5010, 'no', 'brake loose'),
+(13, 3, 3, '2021-02-25', 177, 'no', ''),
+(17, 3, 3, '2021-02-25', 20, 'no', ''),
+(18, 3, 3, '2021-02-25', 20, 'no', ''),
+(19, 3, 3, '2021-02-25', 20, 'no', ''),
+(20, 3, 3, '2021-02-25', 20, 'no', ''),
+(21, 3, 3, '2021-02-25', 20, 'no', ''),
+(22, 3, 3, '2021-02-25', 20, 'no', ''),
+(23, 3, 3, '2021-02-27', 20, 'no', ''),
+(24, 3, 3, '2021-03-03', 30, 'no', '');
 
 -- --------------------------------------------------------
 
@@ -67,7 +75,8 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_phno`, `customer_email`, `customer_address`) VALUES
 (1, 'Aishwarya', '7778789997', 'aishwarya@gmail.com', 'porvorim'),
-(2, 'Melrick', '9994562898', 'melrick@gmail.com', 'mapusa');
+(2, 'Melrick', '9994562898', 'melrick@gmail.com', 'mapusa'),
+(3, 'Rushikesh Arlekar', '8888888888', 'ruarlekar@gmail.com', 'Mapusa');
 
 -- --------------------------------------------------------
 
@@ -85,7 +94,25 @@ CREATE TABLE `opted_services` (
 --
 
 INSERT INTO `opted_services` (`appointment_id`, `service_id`) VALUES
-(2, 2);
+(2, 2),
+(13, 2),
+(13, 1),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 1),
+(13, 3),
+(13, 2),
+(13, 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +144,7 @@ INSERT INTO `services_offered` (`service_id`, `service_name`, `service_price`) V
 CREATE TABLE `vehicles` (
   `vehicle_id` int(11) NOT NULL,
   `vehicle_model` varchar(50) NOT NULL,
-  `vehicle_registration_no` varchar(10) NOT NULL,
+  `vehicle_registration_no` varchar(15) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -126,8 +153,9 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `vehicle_registration_no`, `customer_id`) VALUES
-(1, 'vespa', 'ga051235', 2),
-(2, 'Activa', 'ga054667', 1);
+(1, 'vespa', 'GA/03/AE/1783', 2),
+(2, 'Activa', 'GA/05/K/7658', 1),
+(3, 'Hero Passion Pro', 'GA/03/AK/7994', 3);
 
 --
 -- Indexes for dumped tables
@@ -175,13 +203,13 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `services_offered`
@@ -193,7 +221,7 @@ ALTER TABLE `services_offered`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
