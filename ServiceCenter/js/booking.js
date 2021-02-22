@@ -1,24 +1,36 @@
 $(document).ready(function(){
 
-    
+    $.ajax({
+        type:'POST',
+        url:'web_services/dates.php',
+        data: {},
+        success:function(result){
+            dateRange = result.data;
+            da = dateRange.split(",");
+            dt = JSON.parse(JSON.stringify(da));
+            var today = new Date();
+            $('#datepick').datepicker({
+                dateFormat:'yy/mm/dd',
+                minDate: today,
+                beforeShowDay: function(date) {
+                    var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                    var day = date.getDay();
+                    if (day == 0 || dt.indexOf(dateString) != -1) {
+                        return [false, "busy"]
+                    } else {
+                        return [true, "free"]
+                    }
+                }
+            });
 
-    var thisIsMyJSVar = '<? $sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >1"; $result2 = $connect->query($sql2); while ($row2 = $result2->fetch_assoc()){ $date_echo = $row2["date_booking"]; $date_disable = date("Y-m-d", strtotime($date_echo)); echo ""$date_disable","; } ?>';
-
-    dateRange = [thisIsMyJSVar];
-    var today = new Date();
-    $('#datepick').datepicker({
-        dateFormat:'yy/mm/dd',
-        minDate: today,
-        beforeShowDay: function(date) {
-            var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
-            var day = date.getDay();
-            if (day == 0 || dateRange.indexOf(dateString) != -1) {
-                return [false, "busy"]
-            } else {
-                return [true, "free"]
-            }
+        },
+        error: function(error) {
+            // alert("error: ".error);
+            console.log('error: '.error);
         }
-    });
+    })
+
+    
     
     
     var maxLimit = 200;
@@ -130,7 +142,7 @@ $(document).ready(function(){
         }
 
         var vregno = $("#reg").val();
-        console.log(vregno);
+        // console.log(vregno);
         if(isempty(vregno)){
             $("#erreg").html('Registration number Required*');
             flag = -1;
@@ -195,9 +207,9 @@ $(document).ready(function(){
                     desc: desc,
                     values: values
                 },
-                success:function(result){
-                    alert(result.status);
-                    var resp = result.status;
+                success:function(response){
+                    alert(response.msg);
+                    var resp = response.status;
                     if(resp == 'success'){
                         window.open("index.php","_self")
                     }
@@ -205,8 +217,7 @@ $(document).ready(function(){
                 },
                 error: function(xhr, status, error) {
                     alert("error: ".error);
-                },
-                dataType: 'text'
+                }
             })
         }
 

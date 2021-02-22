@@ -29,7 +29,7 @@ require 'config/connect.php';
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/booking.js"></script>
+    
 
 
     <title>Animation</title>
@@ -176,6 +176,8 @@ require 'config/connect.php';
 
     <script src="js/jquery_1.js"></script>
     <script src="js/jquery_ui.js"></script>
+    <script src="js/booking.js"></script>
+    
 
 </body>
 

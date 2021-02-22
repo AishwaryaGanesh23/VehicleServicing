@@ -17,7 +17,7 @@ $date = str_replace('/', '-', $date);
 
 $chk_app_sql = mysqli_query($connect,"select * from appointment where date_booking='$date' and vehicle_id = (select vehicle_id from vehicles where vehicle_registration_no='$regno')");
 if(mysqli_num_rows($chk_app_sql) > 0){
-    $response_array['status']='This appointment is already booked.';
+    $response_array['msg']='This appointment is already booked.';
 }
 else{
 
@@ -47,36 +47,37 @@ else{
                                 $s_id = $ser_data['service_id'];
                                 $app_data = mysqli_fetch_array($get_app_sql);
                                 $a_id = $app_data['appointment_id'];
-                                $services_sql = mysqli_query($connect,"insert into opted_services values('$a_id','$s_id')");
+                                $services_sql = mysqli_query($connect,"insert into opted_services values('','$a_id','$s_id')");
                                 if($services_sql){
-                                    $response_array['status']='Appointment Booked Successfully';
+                                    $response_array['msg']='Appointment Booked Successfully';
+                                    $response_array['status']='success';
                                 }
                                 else{
-                                    $response_array['status']='err_4';
+                                    $response_array['msg']='err_4';
                                 }
             
                             }
                         }
                         else{
-                            $response_array['status']='err_3';
+                            $response_array['msg']='err_3';
                         }
                     } 
                     else{
-                        $response_array['status']='err_2';
+                        $response_array['msg']='err_2';
                     }
                 }
             }
             else{
-                $response_array['status']='err_1';
+                $response_array['msg']='err_1';
             }
         }
         else{
-            $response_array['status']=$regno.' vehicle is not registered.Kindly register the vehicle in your profile.';
+            $response_array['msg']=$regno.' vehicle is not registered.Kindly register the vehicle in your profile.';
         }
 
     }
     else{
-        $response_array['status']='User named '.$name.' not found. Kindly register in the System.';
+        $response_array['msg']='User named '.$name.' not found. Kindly register in the System.';
     }
 
 }
