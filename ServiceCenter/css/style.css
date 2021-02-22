@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: sans-serif;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 
 .form-section {
@@ -29,28 +29,26 @@ body {
   overflow: hidden;
 }
 
-.form-appt{
-  width: 50%;
-  max-width: 500px;
+.form-appt {
+  width: 70%;
   padding: 15px;
-  border: 5px solid white;
+  border: 5px solid rgb(141, 139, 139);
   border-radius: 6px;
-  background:rgb(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255, 0.9);
 }
 
-.form-pos{
+.form-pos {
   margin: 30rem 30rem;
 }
 
 .form-section input {
   height: 100%;
   width: 100%;
-  color: red;
   padding-top: 20px;
   border: none;
   outline: none;
-  border-radius:10px;
-  background-color:rgb(255, 255, 255,0.2);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 0.2);
 }
 
 .form-section label {
@@ -73,7 +71,6 @@ body {
   bottom: -1px;
   transform: translateX(-100%);
 }
-
 
 .content-name {
   position: absolute;
@@ -101,7 +98,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   color: black !important;
 }
 
-.form-section.errmsg{
+.form-section.errmsg {
   position: absolute;
   font-size: medium;
   height: auto;
@@ -110,14 +107,18 @@ input[type="date"]:focus::-webkit-datetime-edit {
   left: 0px;
 }
 
-.errmsg{
+.errmsg {
   font-size: small;
   font-style: italic;
   color: rgb(255, 0, 0);
 }
 
-.chars_left{
+.chars_left {
   position: absolute;
   font-size: small;
   font-style: italic;
+}
+
+#desc {
+  resize: none;
 }

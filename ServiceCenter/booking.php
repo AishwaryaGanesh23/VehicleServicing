@@ -158,14 +158,14 @@ require 'config/connect.php';
                 <label for="desc">Specific Request:</label>
                 <br>
                 <br>
-                <textarea rows="4" cols="40" name="desc" id="desc" required autocomplete="off"></textarea>
+                <textarea rows="6" cols="89" name="desc" id="desc" required autocomplete="off"></textarea>
             </div>
             <span class="chars_left" id="charsleft"></span>
             <span class="errmsg" id="erdesc"></span>
             <br>
             <br>
 
-            <button type="submit" class="btn btn-success btn-lg" name="addAppt" id="submit">Place Appointment</button>
+            <button type="submit" class="btn btn-block btn-success btn-lg" name="addAppt" id="submit">Place Appointment</button>
 
         </form>
 
@@ -178,5 +178,8 @@ require 'config/connect.php';
     <script src="js/jquery_ui.js"></script>
 
 </body>
+
+
+
 
 </html>

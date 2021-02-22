@@ -47,7 +47,7 @@ else{
                                 $s_id = $ser_data['service_id'];
                                 $app_data = mysqli_fetch_array($get_app_sql);
                                 $a_id = $app_data['appointment_id'];
-                                $services_sql = mysqli_query($connect,"insert into opted_services values(NULL,'$a_id','$s_id')");
+                                $services_sql = mysqli_query($connect,"insert into opted_services values('$a_id','$s_id')");
                                 if($services_sql){
                                     $response_array['status']='Appointment Booked Successfully';
                                 }
