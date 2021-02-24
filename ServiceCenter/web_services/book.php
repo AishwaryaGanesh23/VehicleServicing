@@ -36,7 +36,7 @@ else{
             $apptmt_sql = mysqli_query($connect,"insert into appointment values('','$c_id','$v_id','$date','$kilo','$pickdrop','$desc')");
             if($apptmt_sql){
 
-                if($values){
+                if($values == "null"){
                     for($i=0; $i < count($values); $i++){
                         $ser_tmp = $values[$i];
                         $get_ser_sql = mysqli_query($connect,"select service_id from services_offered where service_name='$ser_tmp'");

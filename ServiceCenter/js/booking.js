@@ -8,7 +8,7 @@ $(document).ready(function(){
             dateRange = result.data;
             da = dateRange.split(",");
             dt = JSON.parse(JSON.stringify(da));
-            console.log(dt);
+            // console.log(dt);
             var today = new Date();
             $('#datepick').datepicker({
                 dateFormat:'yy/mm/dd',
@@ -16,7 +16,7 @@ $(document).ready(function(){
                 beforeShowDay: function(date) {
                     var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
                     var day = date.getDay();
-                    console.log(dt.indexOf(dateString));
+                    // console.log(dt.indexOf(dateString));
                     if (day == 0 || dt.indexOf(dateString) != -1) {
                         return [false, "busy"]
                     } else {
@@ -44,7 +44,7 @@ $(document).ready(function(){
             var charactersLeft = maxLimit - lengthCount + 1;                   
         }
         else {                   
-            var charactersLeft = maxLimit - lengthCount;                   
+            var charactersLeft = maxLimit - lengthCount;                  
         }
         $('#charsleft').text(charactersLeft + ' Characters left');
     });
@@ -66,7 +66,7 @@ $(document).ready(function(){
         if(isempty(cname)){
             // alert("empty name");
             $("#ername").html('Name Required*');
-            flag = -1;            
+            flag = -1;        
         }
         else if(checkforspchar(cname) || checkforno(cname)){
             // alert("char only");
@@ -113,7 +113,7 @@ $(document).ready(function(){
         }
 
         var cemail = $("#email").val();
-        console.log(cemail);
+        // console.log(cemail);
         if(isempty(cemail)){
             $("#eremail").html('Email Required*');
             flag = -1;
@@ -185,6 +185,9 @@ $(document).ready(function(){
         }
 
         var desc = $("#desc").val();
+        if(isempty(desc)){
+            desc = "null";
+        }
 
         const checkboxes = document.querySelectorAll(`input[name="service_name"]:checked`);
         let values = [];
@@ -192,10 +195,19 @@ $(document).ready(function(){
             values.push(checkbox.value);
         });
 
+        // alert(values);
+        if(isempty(values)){
+            values = "null";
+            flag == 0;
+        }
+        // alert(values);
+
         // alert("making call");     
 
-        if(flag == -1)
+        if(flag == -1 || isempty(cname)){
+            alert("Pleae fill the form.")
             return(false);
+        }
         else{
             $.ajax({
                 type:'POST',
