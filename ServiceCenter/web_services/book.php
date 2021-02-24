@@ -36,12 +36,11 @@ else{
             $apptmt_sql = mysqli_query($connect,"insert into appointment values('','$c_id','$v_id','$date','$kilo','$pickdrop','$desc')");
             if($apptmt_sql){
 
-                if($values == "null"){
+                if($values != "null"){
                     for($i=0; $i < count($values); $i++){
                         $ser_tmp = $values[$i];
                         $get_ser_sql = mysqli_query($connect,"select service_id from services_offered where service_name='$ser_tmp'");
                         $get_app_sql = mysqli_query($connect,"select appointment_id from appointment where customer_id = (select customer_id from customers where customer_phno='$contact')");
-                        // echo($get_app_sql);
                         if(mysqli_num_rows($get_ser_sql) > 0){
                             if(mysqli_num_rows($get_app_sql) > 0){
                                 {
