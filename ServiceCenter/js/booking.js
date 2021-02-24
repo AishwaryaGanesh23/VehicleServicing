@@ -8,6 +8,7 @@ $(document).ready(function(){
             dateRange = result.data;
             da = dateRange.split(",");
             dt = JSON.parse(JSON.stringify(da));
+            console.log(dt);
             var today = new Date();
             $('#datepick').datepicker({
                 dateFormat:'yy/mm/dd',
@@ -15,6 +16,7 @@ $(document).ready(function(){
                 beforeShowDay: function(date) {
                     var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
                     var day = date.getDay();
+                    console.log(dt.indexOf(dateString));
                     if (day == 0 || dt.indexOf(dateString) != -1) {
                         return [false, "busy"]
                     } else {

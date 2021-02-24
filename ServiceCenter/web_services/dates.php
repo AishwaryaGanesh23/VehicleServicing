@@ -4,7 +4,7 @@ header('Content-type: application/json');
 
 require_once '../config/connect.php';
 
-$sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >= 3";
+$sql2 = "select date_booking from appointment group by date_booking having count(date_booking) >= 2";
 $result2 = $connect->query($sql2);
 
 $response['data'] = '';
