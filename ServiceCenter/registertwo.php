@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+require 'config/connect.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,16 +29,33 @@
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/booking.js"></script>
+
 
 
     <title>Animation</title>
 </head>
 
 <body>
-    <a href="booking.php">BOOKING</a>
-    <a href="login.php">LOGIN</a>
-    <a href="registerone.php">REGISTER</a>
+
+    <div class="container">
+
+        <h5>Vehicle Details</h5>
+        <form id="">
+            <div class="form-group">
+                <input type="text" class="form-control" id="vehicle_model" placeholder="Vehicle Model" name="vehicle-model" required />
+                <span id="modelError"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number" name="vehicle-reg-number" required />
+                <span id="regnumError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
+        </form>
+
+    </div>
+
+
 </body>
 
 </html>
