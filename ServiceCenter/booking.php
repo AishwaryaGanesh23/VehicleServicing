@@ -29,7 +29,7 @@ require 'config/connect.php';
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-
+    
 
 
     <title>Animation</title>
@@ -158,7 +158,7 @@ require 'config/connect.php';
                 <label for="desc">Specific Request:</label>
                 <br>
                 <br>
-                <textarea rows="6" cols="50" name="desc" id="desc" required autocomplete="off"></textarea>
+                <textarea rows="6" cols="89" name="desc" id="desc" required autocomplete="off"></textarea>
             </div>
             <span class="chars_left" id="charsleft"></span>
             <span class="errmsg" id="erdesc"></span>
@@ -177,7 +177,7 @@ require 'config/connect.php';
     <script src="js/jquery_1.js"></script>
     <script src="js/jquery_ui.js"></script>
     <script src="js/booking.js"></script>
-
+    
 
 </body>
 

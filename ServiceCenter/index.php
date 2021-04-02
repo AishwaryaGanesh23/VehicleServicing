@@ -29,9 +29,7 @@
 </head>
 
 <body>
-    <a href="booking.php">BOOKING</a>
-    <a href="login.php">LOGIN</a>
-    <a href="registerone.php">REGISTER</a>
-</body>
 
+    <a href="booking.php">booking</a>
+</body>
 </html>

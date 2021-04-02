@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 
 require 'config/connect.php';
 
@@ -29,7 +29,7 @@ require 'config/connect.php';
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-
+    <script src="js/vehRegistration.js"></script>
 
 
     <title>Animation</title>
@@ -40,18 +40,20 @@ require 'config/connect.php';
     <div class="container">
 
         <h5>Vehicle Details</h5>
-        <form id="">
+        <div class="welcommsg" id="wcmsg"></div>
+        <form id="veh_form">
             <div class="form-group">
                 <input type="text" class="form-control" id="vehicle_model" placeholder="Vehicle Model" name="vehicle-model" required />
                 <span id="modelError"></span>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number" name="vehicle-reg-number" required />
-                <span id="regnumError"></span>
+                <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number " name="vehicle-reg-number" required />
+                <span id="regnumError" style="color:white">(eg  GA/03/AE/1783)</span>
             </div>
 
             <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
         </form>
+        <div id="formErr" style="color:white"></div>
 
     </div>
 

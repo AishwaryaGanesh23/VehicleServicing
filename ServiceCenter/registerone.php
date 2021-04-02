@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 
 require 'config/connect.php';
 
@@ -29,6 +29,7 @@ require 'config/connect.php';
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/register.js"></script>
 
 
 
@@ -40,7 +41,7 @@ require 'config/connect.php';
     <div class="container">
 
         <h5>Register</h5>
-        <form id="">
+        <form id="reg_form">
 
             <div class="form-group">
                 <input type="text" class="form-control" id="customer_name" placeholder="Name" name="customer-name" required />
@@ -55,7 +56,7 @@ require 'config/connect.php';
                 <span id="emailError"></span>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="customer_password" placeholder="Password" name="customer-password" required />
+                <input type="password" class="form-control" id="customer_password" placeholder="Password" name="customer-password" autocomplete="on" required />
                 <span id="passwordError"></span>
             </div>
             <div class="form-group">
@@ -63,7 +64,7 @@ require 'config/connect.php';
                 <span id="addressError"></span>
             </div>
 
-            <a href="registertwo.php" type="submit" class="btn btn-info  btn-block btn-lg" name="" id="">Next</a>
+            <button type="submit" class="btn btn-info  btn-block btn-lg" name="reg_button" id="reg_button">Next</button>
 
         </form>
     </div>
