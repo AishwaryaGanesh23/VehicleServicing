@@ -30,6 +30,8 @@
 
 <body>
 
-    <a href="booking.php">booking</a>
+    <a href="login.php">Login</a>
+
 </body>
+
 </html>
