@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 11:29 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Generation Time: Apr 02, 2021 at 02:15 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -47,16 +46,16 @@ INSERT INTO `appointment` (`appointment_id`, `customer_id`, `vehicle_id`, `date_
 (2, 2, 1, '2021-02-24', 5000, 'no', 'light'),
 (3, 2, 1, '2021-02-20', 5010, 'no', 'brake loose'),
 (13, 3, 3, '2021-02-25', 177, 'no', ''),
-(17, 3, 3, '2021-02-25', 20, 'no', ''),
-(18, 3, 3, '2021-02-25', 20, 'no', ''),
-(19, 3, 3, '2021-02-25', 20, 'no', ''),
-(20, 3, 3, '2021-02-25', 20, 'no', ''),
-(21, 3, 3, '2021-02-25', 20, 'no', ''),
-(22, 3, 3, '2021-02-25', 20, 'no', ''),
-(23, 3, 3, '2021-02-27', 20, 'no', ''),
-(24, 3, 3, '2021-03-03', 30, 'no', ''),
 (25, 1, 2, '2021-02-23', 5026, 'no', 'light broke'),
-(26, 1, 2, '2021-02-25', 5026, 'no', 'light broke again');
+(26, 1, 2, '2021-02-25', 5026, 'no', 'light broke again'),
+(29, 3, 3, '2021-02-22', 45, 'no', 'nothing'),
+(43, 3, 3, '2021-03-11', 32432, 'no', 'null'),
+(44, 3, 3, '2021-03-16', 32432, 'no', 'null'),
+(45, 3, 3, '2021-02-27', 6, 'no', 'null'),
+(46, 3, 3, '2021-02-26', 3323, 'no', 'null'),
+(47, 3, 3, '2021-03-03', 333, 'no', 'null'),
+(48, 3, 3, '2021-03-19', 33, 'no', 'null'),
+(49, 3, 3, '2021-03-23', 44444, 'no', 'null');
 
 -- --------------------------------------------------------
 
@@ -79,7 +78,15 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_phno`, `customer_email`, `customer_address`) VALUES
 (1, 'Aishwarya', '7778789997', 'aishwarya@gmail.com', 'porvorim'),
 (2, 'Melrick', '9994562898', 'melrick@gmail.com', 'mapusa'),
-(3, 'Rushikesh Arlekar', '8888888888', 'ruarlekar@gmail.com', 'Mapusa');
+(3, 'Rushikesh Arlekar', '8888888888', 'ruarlekar@gmail.com', 'Mapusa'),
+(6, 'Khushboo Shetkar', '8007014757', 'khushboo.shetkar43.k', 'Oxel'),
+(8, 'Khushboo Shetkar', '8007014757', 'khushboo.shetkar43.k', 'Oxel'),
+(9, 'kunal', '1234512345', 'kunal@gmail.com', 'vasco'),
+(10, 'sanchai', '1234565432', 'sanchai@gmail.com', 'Parra'),
+(11, 'Rushikesh Arlekar', '7887330486', 'ruarlekar1@gmail.com', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
+(12, 'Rushikesh Arlekar', '7887330486', 'ruarlekar11@gmail.co', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
+(13, 'Rushikesh Arlekar', '7887330486', 'ruarlekar111@gmail.c', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
+(14, 'lenin', '9999999999', 'lenin@gmail.com', 'Margao');
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,20 @@ INSERT INTO `opted_services` (`os_id`, `appointment_id`, `service_id`) VALUES
 (19, 13, 1),
 (20, 1, 2),
 (21, 1, 2),
-(22, 1, 3);
+(22, 1, 3),
+(23, 13, 1),
+(24, 13, 1),
+(25, 13, 3),
+(26, 13, 2),
+(27, 13, 2),
+(28, 13, 1),
+(29, 13, 2),
+(30, 13, 1),
+(31, 13, 3),
+(32, 13, 2),
+(33, 13, 1),
+(34, 13, 1),
+(35, 13, 3);
 
 -- --------------------------------------------------------
 
@@ -145,6 +165,33 @@ INSERT INTO `services_offered` (`service_id`, `service_name`, `service_price`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `uid` int(11) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `type` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`uid`, `email`, `password`, `type`) VALUES
+(1, 'ruarlekar@gmail.com', '12345', 'employee'),
+(6, 'khushboo.shetkar43.ks@gmail.com', '123456', 'customer'),
+(7, 'kunal@gmail.com', 'qwertyui', 'customer'),
+(8, 'sanchai@gmail.com', '123456', 'customer'),
+(9, 'ruarlekar1@gmail.com', '123455', 'customer'),
+(10, 'ruarlekar11@gmail.com', '5555555', 'customer'),
+(11, 'ruarlekar111@gmail.com', 'jvhvkhvh', 'customer'),
+(12, 'lenin@gmail.com', '1234567', 'customer');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vehicles`
 --
 
@@ -162,7 +209,8 @@ CREATE TABLE `vehicles` (
 INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `vehicle_registration_no`, `customer_id`) VALUES
 (1, 'vespa', 'GA/03/AE/1783', 2),
 (2, 'Activa', 'GA/05/K/7658', 1),
-(3, 'Hero Passion Pro', 'GA/03/AK/7994', 3);
+(3, 'Hero Passion Pro', 'GA/03/AK/7994', 3),
+(34, 'maesto', 'GA/03/AA/2103', 14);
 
 --
 -- Indexes for dumped tables
@@ -197,6 +245,12 @@ ALTER TABLE `services_offered`
   ADD PRIMARY KEY (`service_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`uid`);
+
+--
 -- Indexes for table `vehicles`
 --
 ALTER TABLE `vehicles`
@@ -211,19 +265,19 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `opted_services`
 --
 ALTER TABLE `opted_services`
-  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `services_offered`
@@ -232,10 +286,16 @@ ALTER TABLE `services_offered`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
