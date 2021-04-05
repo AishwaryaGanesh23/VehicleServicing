@@ -98,29 +98,35 @@ if (isset($_POST['login_button'])) {
 
 <body>
 
-  <div class="container">
+  <div class="login_container ">
 
-    <h3 class="login_head">Login</h3>
-    <form action="" method="POST">
-      <div class="form-group">
-        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-        <span id="loginEmailError" class=""></span>
-      </div>
+    <div class="login_fields">
+      <h3 class="login_head">Login</h3>
+      <form action="" method="POST">
+        <div class="form-group">
+          <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+          <span id="loginEmailError" class=""></span>
+        </div>
 
-      <div class="form-group">
-        <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" autocomplete="on">
-        <span id="loginPasswordError" class=""></span>
-      </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" autocomplete="on">
+          <span id="loginPasswordError" class=""></span>
+        </div>
 
-      <button type="submit" class="btn btn-block btn-success btn-lg " id="loginButton" name="login_button">Login</button>
+        <button type="submit" class="btn btn-block btn-success btn-lg " id="loginButton" name="login_button">Login</button>
 
-    </form>
+      </form>
 
-    <span class=""><a href="registerone.php">New Here? Click to register!</a></span>
-    </br>
-    <!-- <span class=""><a href="" data-toggle="modal" data-target="#passwordModal">Forgot password?</a></span> -->
+      <span class="new_user"><a href="registerone.php">New Here? Click to register!</a></span>
+      </br>
+      <!-- <span class=""><a href="" data-toggle="modal" data-target="#passwordModal">Forgot password?</a></span> -->
 
-    <span class="red" id="loginerrmsg"><?php echo @$msg; ?></span>
+      <span class="red" id="loginerrmsg"><?php echo @$msg; ?></span>
+
+    </div>
+    <div class="register_img">
+
+    </div>
 
   </div>
 

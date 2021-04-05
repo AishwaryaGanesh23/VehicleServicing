@@ -37,23 +37,30 @@ require 'config/connect.php';
 
 <body>
 
-    <div class="container">
+    <div class="register_container">
+        <div class="register_image">
 
-        <h5>Vehicle Details</h5>
-        <div class="welcommsg" id="wcmsg"></div>
-        <form id="veh_form">
-            <div class="form-group">
-                <input type="text" class="form-control" id="vehicle_model" placeholder="Vehicle Model" name="vehicle-model" required />
-                <span id="modelError"></span>
+        </div>
+        <div class="register_contents">
+            <div class="reg_head">
+                Vehicle Details
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number " name="vehicle-reg-number" required />
-                <span id="regnumError" style="color:white">(eg  GA/03/AE/1783)</span>
-            </div>
+            <div class="welcommsg" id="wcmsg"></div>
+            <form id="veh_form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="vehicle_model" placeholder="Vehicle Model" name="vehicle-model" required />
+                    <span id="modelError"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number " name="vehicle-reg-number" required />
+                    <span id="regnumError" style="color:white">(eg GA/03/AE/1783)</span>
+                </div>
 
-            <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
-        </form>
-        <div id="formErr" style="color:white"></div>
+                <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
+            </form>
+            <div id="formErr" style="color:white"></div>
+
+        </div>
 
     </div>
 
