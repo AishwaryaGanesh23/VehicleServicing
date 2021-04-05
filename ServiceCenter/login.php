@@ -43,11 +43,11 @@ if (isset($_POST['login_button'])) {
       $_SESSION['type'] = $user_data['type'];
 
       if ($user_data['type'] == 'admin') {
-        header('location:admin/index.php');
+        header('location:profile.php');
       } else if ($user_data['type'] == 'employee') {
-        header('location:employee/index.php');
+        header('location:profile.php');
       } else {
-        header('location:public/index.php');
+        header('location:profile.php');
       }
     } else {
       $msg = '<div class="alert alert-danger mt-5" role="alert">
