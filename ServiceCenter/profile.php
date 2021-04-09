@@ -31,8 +31,7 @@
     <div class="profile_container">
         <div class="profile_left">
             <div class="profile_logo">
-                <div class="logoimg">
-                </div>
+                <div class="logoimg"></div>
             </div>
             <div class="profile_options">
                 <div class="option">Personal Details</div>

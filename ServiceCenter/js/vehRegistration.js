@@ -63,7 +63,7 @@ $(document).ready(function(){
                     window.location.href="login.php";
                 }
             },
-            error: function(xhr, status, error) {
+            error: function(error) {
                 alert("error: "+error);
             }
         })

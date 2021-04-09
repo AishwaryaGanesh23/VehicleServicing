@@ -32,8 +32,6 @@ $sql_verify = mysqli_query($connect,"select email from users where email='$email
        
     }
 
-
-
 echo json_encode($response_array);
 
 
