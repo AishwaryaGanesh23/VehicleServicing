@@ -10,8 +10,6 @@ $email = $_POST['customer-email'];
 $password = $_POST['customer-password'];
 $address = $_POST['customer-address'];
 
-$response_array['status']='hello';
-
 $sql_verify = mysqli_query($connect,"select email from users where email='$email'");
     if(mysqli_num_rows($sql_verify) > 0){
         // echo "fail";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2021 at 02:15 PM
+-- Generation Time: Apr 11, 2021 at 09:26 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -67,7 +67,7 @@ CREATE TABLE `customers` (
   `customer_id` int(11) NOT NULL,
   `customer_name` varchar(50) NOT NULL,
   `customer_phno` varchar(10) NOT NULL,
-  `customer_email` varchar(20) NOT NULL,
+  `customer_email` varchar(40) NOT NULL,
   `customer_address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,7 +86,9 @@ INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_phno`, `custo
 (11, 'Rushikesh Arlekar', '7887330486', 'ruarlekar1@gmail.com', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
 (12, 'Rushikesh Arlekar', '7887330486', 'ruarlekar11@gmail.co', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
 (13, 'Rushikesh Arlekar', '7887330486', 'ruarlekar111@gmail.c', 'H.no 78/127, Verla Freitas Vado, Mapusa, Bardez Goa'),
-(14, 'lenin', '9999999999', 'lenin@gmail.com', 'Margao');
+(14, 'lenin', '9999999999', 'lenin@gmail.com', 'Margao'),
+(15, 'lenin', '9999999999', 'lenin1@gmail.com', 'Margao'),
+(18, 'Rushikesh Arlekar', '7887330486', 'ruarlekar55@gmail.com', 'H.no 78/127');
 
 -- --------------------------------------------------------
 
@@ -180,14 +182,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `email`, `password`, `type`) VALUES
-(1, 'ruarlekar@gmail.com', '12345', 'employee'),
+(1, 'ruarlekar@gmail.com', '12345', 'admin'),
 (6, 'khushboo.shetkar43.ks@gmail.com', '123456', 'customer'),
 (7, 'kunal@gmail.com', 'qwertyui', 'customer'),
-(8, 'sanchai@gmail.com', '123456', 'customer'),
+(8, 'sanchai@gmail.com', '123456', 'employee'),
 (9, 'ruarlekar1@gmail.com', '123455', 'customer'),
 (10, 'ruarlekar11@gmail.com', '5555555', 'customer'),
 (11, 'ruarlekar111@gmail.com', 'jvhvkhvh', 'customer'),
-(12, 'lenin@gmail.com', '1234567', 'customer');
+(12, 'lenin@gmail.com', '1234567', 'customer'),
+(13, 'lenin1@gmail.com', 'eeeeeeee', 'customer'),
+(16, 'ruarlekar55@gmail.com', '222222', 'customer');
 
 -- --------------------------------------------------------
 
@@ -210,7 +214,9 @@ INSERT INTO `vehicles` (`vehicle_id`, `vehicle_model`, `vehicle_registration_no`
 (1, 'vespa', 'GA/03/AE/1783', 2),
 (2, 'Activa', 'GA/05/K/7658', 1),
 (3, 'Hero Passion Pro', 'GA/03/AK/7994', 3),
-(34, 'maesto', 'GA/03/AA/2103', 14);
+(34, 'maesto', 'GA/03/AA/2103', 14),
+(38, 'jupiter', 'GA/03/AA/2199', 15),
+(110, 'activa', 'GA/03/AB/8199', 18);
 
 --
 -- Indexes for dumped tables
@@ -271,7 +277,7 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `opted_services`
@@ -289,13 +295,13 @@ ALTER TABLE `services_offered`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- Constraints for dumped tables
