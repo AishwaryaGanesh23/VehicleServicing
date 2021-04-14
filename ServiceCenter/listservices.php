@@ -1,70 +1,140 @@
 <?php
 
-// session_start();
+    session_start();
 
-require 'config/connect.php';
+    require 'config/connect.php';
+
+    $email = $_SESSION['email'];
+    $type = $_SESSION['type'];
+
+    $chk_sql = mysqli_query($connect,"select * from users where email = '$email' and type = '$type'");
+    $chk_data = mysqli_fetch_assoc($chk_sql);
+    $cust_sql = mysqli_query($connect,"select * from customers where customer_email = '$email'");
+    $data = mysqli_fetch_assoc($cust_sql);
+    $cid = $data['customer_id'];
+    $cname = $data['customer_name'];
+    //if($chk_data['type'] == "cutomer"){
+     // $app_sql = mysqli_query($connect,"select * from appointment where customer_id = '$cid'");
+    //}
+    //else{
+      $serv_sql = mysqli_query($connect,"select * from services_offered");
+    //}
+
+    // }
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Form</title>
+  <meta charset="utf-8">
+  <title>Client Offered Services</title>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Ubuntu&display=swap" rel="stylesheet">
 
-    <!-- Css and bootstrap Stylesheets -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- Css and bootstrap Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/40419ae504.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/40419ae504.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <script src="js/jquery_1.js"></script>
+  <script src="js/jquery_ui.js"></script>
+  <script src="js/clientservices.js"></script>
 
-    <!-- Bootstrap Scripts -->
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/clientservices.js"></script>
-
-
-    <title>Service List</title>
 </head>
 
 <body>
 
-    <div class="register_container">
-        <div class="register_image">
+  <section id="title">
 
+    <div class="containers-fluid">
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-light  ">
+        <a class="navbar-brand" href="">
+            <?php
+            echo $cname;
+            ?>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="custProfile.php" id="back">Back</a>
+            </li>
+          </ul>
         </div>
-        <div class="register_contents">
-            <div class="reg_head">
-                Service Details
-            </div>
-            <div class="welcommsg" id="wcmsg"></div>
-            <form id="service_form">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="service_name" placeholder="Service Name" name="service-name" required />
-                    <span id="nameError"></span>
-                </div>
-                <div class="form-group">
-                    <input type="number" class="form-control" id="service_price" placeholder="Service Price " name="service-price" required />
-                    <span id="priceError"></span>
-                </div>
+      </nav>
 
-                <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
-            </form>
-            <div id="formErr" style="color:white"></div>
+      <div class="row">
+        <table class="user-details">
+            <tr>
+                <th>Service Name<i class="fas fa-calendar-day" style="margin-left: 5px;margin-top: 5px;"></i></th>
+                <th>Price<i class="fas fa-motorcycle" style="margin-left: 5px;margin-top: 5px;"></i></th>
+                <th>Change Price<i class="fas fa-calendar-alt" style="margin-left: 5px;margin-top: 5px;"></i></th>
+                <th>Cancel<i class="fas fa-window-close" style="margin-left: 5px;margin-top: 5px;"></i></th>
+            </tr>
+            <?php
+                while($serv_data = mysqli_fetch_array($serv_sql)){
+                  $servid = $serv_data['service_id']
+            ?>
+            <tr>
+                <td><?php echo $serv_data['service_name'];?></td>
+                <td><?php echo $serv_data['service_price']; ?></td>
+                <td><button type="button" class="btn btn-dark btn-md changebutton" style="margin-top: 3%;" data-toggle="modal" data-target="#changeModal" id="change_button" value="<?php echo $servid; ?>">Change Price<i class="fas fa-calendar-alt" style="margin-left: 5px;margin-top: 5px;" ></i></button></td>
+                <td><button type="button" class="btn btn-dark btn-md cancel_button" style="margin-top: 3%;" id="cancelservice_button" value="<?php echo $servid; ?>">Cancel<i class="fas fa-window-close" style="margin-left: 5px;margin-top: 5px;"></i></button></td>
+            </tr>
+            <?php
+                }
+            ?>
+        </table>
 
-        </div>
-
+        <button type="button" class="btn btn-dark btn-lg" style="margin-top: 3%;" id="add_service" ><i class="fas fa-tools" style="margin-right: 4px;"></i> Add Service</button>
+        
+      </div>
     </div>
+  </section>
 
 
 </body>
 
 </html>
+
+
+
+<!-- Change Modal -->
+<div class="modal fade" id="changeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Change Price To :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="preice-change">
+        <div class="form-section">
+          <input type="text" id="pricechange" required />
+          <label for=" date" class="label-name">
+              <span class="content-name">New Price</span>
+          </label>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="changeButton">Change</button>
+      </div>
+    </div>
+  </div>
+</div>

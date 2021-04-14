@@ -43,7 +43,7 @@ $(document).ready(function(){
     // ajax operation
         $.ajax({
             type:'POST',
-            url:'web_services/addService.php',
+            url:'web_services/service.php',
             data: $("#service_form").serialize(),
             success:function(result){
                 alert(result.status);
@@ -62,6 +62,69 @@ $(document).ready(function(){
             }
         })
     
+    })
+
+    $("#add_service").on('click',function(e){
+        window.location.href="addservices.php";
+    })
+
+    $(".changebutton").on('click',function(e){
+        var servid = this.value;
+         console.log(this.value);
+
+        $("#changeButton").on('click',function(e){
+            // alert("Feature not Implemented yet.");
+            var serprice = $("#pricechange").val();
+    
+            $.ajax({
+                type:'POST',
+                url:'web_services/servicepricechange.php',
+                data: {price: serprice, servid : servid},
+                success:function(response){
+                    // console.log(response);
+                    if(response.status == 'success'){
+                        alert("Price Changed");
+                        window.location.href="listservices.php";
+                    }
+                    else{
+                        alert("price could no be changed");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("error: ".error);
+                }
+            })
+    
+        })
+
+    })
+
+    $(".cancel_button").on('click',function(e){
+        console.log("cancel??");
+        if(confirm("Are you sure to cancel the service?")){
+
+            $.ajax({
+                type:'POST',
+                url:'web_services/cancelservice.php',
+                data: {servid : this.value},
+                success:function(response){
+                    console.log(response);
+                    if(response.status == 'success'){
+                        alert("Service Cancelled");
+                        window.location.href="listservices.php";
+                    }
+                    else{
+                        alert("Service not cancelled");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("error: ".error);
+                }
+            })
+
+        }
+        else
+            window.location.href="listservices.php";
     })
     
 })
