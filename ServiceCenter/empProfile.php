@@ -1,7 +1,14 @@
 <?php
 
 session_start();
-if(!(isset($_SESSION['email']))){
+if(isset($_SESSION['email'])){
+  if($_SESSION['type']=='admin'){
+    header('location:adminProfile.php');
+  }else if($_SESSION['type']=='customer'){
+    // public
+    header('location:custProfile.php');
+  }
+}else if(!(isset($_SESSION['email']))){
     header('location:index.php');
 }
 
@@ -71,7 +78,7 @@ if (isset($_GET['logout'])) {
 
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="big-heading">Does your Vechicle require a Checkup?</h1>
+          <h1 class="big-heading">Do your Vechicle require a Checkup?</h1>
           <button type="button" class="btn btn-dark btn-lg" style="margin-top: 3%;"><i class="fas fa-tools" style="margin-right: 4px;"></i> Book Appointment</button>
         </div>
 

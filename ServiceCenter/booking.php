@@ -1,8 +1,29 @@
 <?php
 
-session_start();
+    session_start();
 
-require 'config/connect.php';
+    if(isset($_SESSION['email'])){
+        if($_SESSION['type']=='admin'){
+          header('location:adminProfile.php');
+        }
+        else if($_SESSION['type']=='employee'){
+          header('location:empProfile.php');
+        }
+        else if($_SESSION['type']=='customer'){
+          // public
+          header('location:custProfile.php');
+        }
+    }
+
+    require 'config/connect.php';
+
+    $email = $_SESSION['email'];
+    $cust_sql = mysqli_query($connect,"select * from customers where customer_email = '$email'");
+    $cust_data = mysqli_fetch_assoc($cust_sql);
+    $cid = $cust_data['customer_id'];
+
+    $veh_sql = mysqli_query($connect,"select * from vehicles where customer_id = '$cid'");
+    $veh_data = mysqli_fetch_assoc($veh_sql);
 
 ?>
 <!DOCTYPE html>
@@ -30,18 +51,18 @@ require 'config/connect.php';
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     
-
+    
 
     <title>Animation</title>
 </head>
 
 <body>
-
+    <div id="email" hidden=true><?php echo $_SESSION['email']; ?></div>
     <div class="container">
         <form id="" method="post" class="form-appt">
 
             <div class="form-section">
-                <input type="text" name="name" id="name" autocomplete="off" required />
+                <input type="text" name="name" id="name" autocomplete="off" value ="<?php echo $cust_data['customer_name'] ?>" required />
                 <label for="name" class="label-name">
                     <span class="content-name">Name</span>
                 </label>
@@ -52,7 +73,7 @@ require 'config/connect.php';
             <br>
 
             <div class="form-section">
-                <input type="tel" name="contact" id="contact" required />
+                <input type="tel" name="contact" id="contact" value ="<?php echo $cust_data['customer_phno'] ?>" required />
                 <label for="contact" class="label-name">
                     <span class="content-name">Contact</span>
                 </label>
@@ -63,7 +84,7 @@ require 'config/connect.php';
             <br>
 
             <div class="form-section">
-                <input type="text" name="address" id="address" required />
+                <input type="text" name="address" id="address" value ="<?php echo $cust_data['customer_address'] ?>" required />
                 <label for="address" class="label-name">
                     <span class="content-name">Address</span>
                 </label>
@@ -74,7 +95,7 @@ require 'config/connect.php';
             <br>
 
             <div class="form-section">
-                <input type="email" name="email" id="email" required />
+                <input type="email" name="email" id="email" value ="<?php echo $cust_data['customer_email'] ?>" required />
                 <label for="email" class="label-name">
                     <span class="content-name">Email Address</span>
                 </label>
@@ -85,7 +106,7 @@ require 'config/connect.php';
             <br>
 
             <div class="form-section">
-                <input type="text" name="model" id="model" required />
+                <input type="text" name="model" id="model" value ="<?php echo $veh_data['vehicle_model'] ?>" required />
                 <label for="model" class="label-name">
                     <span class="content-name">Vehicle Model</span>
                 </label>
@@ -96,7 +117,7 @@ require 'config/connect.php';
             <br>
 
             <div class="form-section">
-                <input type="text" name="reg" id="reg" required />
+                <input type="text" name="reg" id="reg" value ="<?php echo $veh_data['vehicle_registration_no'] ?>" required />
                 <label for="reg" class="label-name">
                     <span class="content-name">Vehicle Registration</span>
                 </label>
@@ -180,7 +201,7 @@ require 'config/connect.php';
     
 
 </body>
-
+ 
 
 
 

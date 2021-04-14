@@ -66,3 +66,27 @@
 </body>
 
 </html>
+
+
+<div>
+    <div class="label">Vehicle Model : </div>
+    <div class="detail"><?php echo $veh_data['vehicle_model']; ?></div>
+    <div class="label">Vehicle Registration Model : </div>
+    <div class="detail"><?php echo $veh_data['vehicle_registration_no']; ?></div>
+    <div class="label">Services Opted :</div>
+    <?php
+    // select service_name from services_offered where service_id = (select service_id from opted_services where appointment_id = '$appid'"
+    $ser_sql = mysqli_query($connect,"select service_name from services_offered  where service_id in (select service_id from opted_services where appointment_id = '$appid')");
+    while($ser_data = mysqli_fetch_array($ser_sql)){
+        // echo $ser_sql
+    ?>
+    <div class="detail"><?php echo $ser_data['service_name']; ?></div>
+    <?php
+    }
+    ?>
+    <div class="label">Vehicle Model:</div>
+    <div class="detail"><?php echo $veh_data['vehicle_model']; ?></div>
+    <div class="label">Vehicle Model:</div>
+    <div class="detail"><?php echo $veh_data['vehicle_model']; ?></div>
+
+</div>

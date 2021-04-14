@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+    var email = $("#email").html();
+    console.log(email);
+
     $.ajax({
         type:'POST',
         url:'web_services/dates.php',
