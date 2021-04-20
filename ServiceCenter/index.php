@@ -3,19 +3,16 @@
 session_start();
 // session_destroy();
 
-if(isset($_SESSION['email'])){
-  if($_SESSION['type']=='admin'){
+if (isset($_SESSION['email'])) {
+  if ($_SESSION['type'] == 'admin') {
     header('location:adminProfile.php');
-  }
-  else if($_SESSION['type']=='employee'){
+  } else if ($_SESSION['type'] == 'employee') {
     header('location:empProfile.php');
-  }
-  else if($_SESSION['type']=='customer'){
+  } else if ($_SESSION['type'] == 'customer') {
     // public
     header('location:custProfile.php');
   }
-}
-else{
+} else {
 
   require_once 'config/connect.php';
   if (isset($_POST['login_button'])) {
@@ -53,7 +50,6 @@ else{
         </div>';
     }
   }
-
 }
 
 ?>
@@ -89,40 +85,40 @@ else{
   <title>Animation</title>
 </head>
 
-  <body>
+<body>
 
-    <div class="login_container ">
+  <div class="login_container ">
 
-      <div class="login_fields">
-        <h3 class="login_head">Login</h3>
-        <form action="" method="POST">
-          <div class="form-group">
-            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-            <span id="loginEmailError" class=""></span>
-          </div>
+    <div class="login_fields">
+      <div class="login_head">Login</div>
+      <form action="" method="POST">
+        <div class="form-group">
+          <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+          <span id="loginEmailError" class=""></span>
+        </div>
 
-          <div class="form-group">
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" autocomplete="on">
-            <span id="loginPasswordError" class=""></span>
-          </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" autocomplete="on">
+          <span id="loginPasswordError" class=""></span>
+        </div>
 
-          <button type="submit" class="btn btn-block btn-success btn-lg " id="loginButton" name="login_button">Login</button>
+        <button type="submit" class="btn btn-block btn-success btn-lg " id="loginButton" name="login_button">Login</button>
 
-        </form>
+      </form>
 
-        <span class="new_user"><a href="registerone.php">New Here? Click to register!</a></span>
-        </br>
-        <!-- <span class=""><a href="" data-toggle="modal" data-target="#passwordModal">Forgot password?</a></span> -->
+      <span class="new_user"><a href="registerone.php">New Here? Click to register!</a></span>
+      </br>
+      <!-- <span class=""><a href="" data-toggle="modal" data-target="#passwordModal">Forgot password?</a></span> -->
 
-        <span class="red" id="loginerrmsg"><?php echo @$msg; ?></span>
+      <span class="red" id="loginerrmsg"><?php echo @$msg; ?></span>
 
-      </div>
-      <div class="register_img">
-
-      </div>
+    </div>
+    <div class="register_img">
 
     </div>
 
-  </body>
+  </div>
+
+</body>
 
 </html>

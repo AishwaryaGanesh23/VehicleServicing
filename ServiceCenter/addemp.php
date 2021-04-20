@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+require 'config/connect.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +29,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/register.js"></script>
+    <script src="js/admin.js"></script>
 
 
 
@@ -37,15 +44,15 @@
         <form id="emp_reg_form">
 
             <div class="form-group">
-                <input type="text" class="form-control" id="employee_name" placeholder="Name" name="customer-name" required />
+                <input type="text" class="form-control" id="employee_name" placeholder="Name" name="employee-name" required />
                 <span id="nameError"></span>
             </div>
             <div class="form-group">
-                <input type="tel" class="form-control" id="employee_contact" placeholder="Mobile Number" name="employee_contact" required />
+                <input type="tel" class="form-control" id="employee_contact" placeholder="Mobile Number" name="employee-contact" required />
                 <span id="contactError"></span>
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" id="employee_email" placeholder="Email" name="employee_email" required />
+                <input type="email" class="form-control" id="employee_email" placeholder="Email" name="employee-email" required />
                 <span id="emailError"></span>
             </div>
             <div class="form-group">
@@ -57,7 +64,7 @@
                 <span id="addressError"></span>
             </div>
 
-            <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>
+            <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="reg_emp">Submit!</button>
 
         </form>
     </div>
