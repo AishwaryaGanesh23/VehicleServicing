@@ -13,7 +13,7 @@
     $data = mysqli_fetch_assoc($cust_sql);
     $cid = $data['customer_id'];
     $cname = $data['customer_name'];
-    if($chk_data['type'] == "cutomer"){
+    if($chk_data['type'] == "customer"){
       $app_sql = mysqli_query($connect,"select * from appointment where customer_id = '$cid'");
     }
     else{
@@ -60,7 +60,7 @@
     <div class="containers-fluid">
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-light  ">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="" id="username" value="<?php echo $cid; ?>">
             <?php
             echo $cname;
             ?>

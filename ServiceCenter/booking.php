@@ -2,19 +2,6 @@
 
     session_start();
 
-    if(isset($_SESSION['email'])){
-        if($_SESSION['type']=='admin'){
-          header('location:adminProfile.php');
-        }
-        else if($_SESSION['type']=='employee'){
-          header('location:empProfile.php');
-        }
-        else if($_SESSION['type']=='customer'){
-          // public
-          header('location:custProfile.php');
-        }
-    }
-
     require 'config/connect.php';
 
     $email = $_SESSION['email'];

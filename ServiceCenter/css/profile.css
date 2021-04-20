@@ -106,3 +106,38 @@ body {
       margin-top: 10%;
     }
   }
+
+  
+/*----------------------------------- User Table ----------------------------------------------*/
+
+table{
+  width: 100%;
+}
+
+table,th,td{
+  color: white;
+  border: 2px solid lightblue;
+  text-align: center;
+  padding: 1rem;
+}
+
+th{
+  height: 4.5rem;
+  font-size: 1.5rem;
+  font-weight:600;
+  background-color: darkblue;
+
+}
+
+td{
+  height: 5rem;
+  font-size: 1.2rem;
+}
+
+.user-details{
+  margin-top: 10%;
+}
+
+
+
+/* appointment */
