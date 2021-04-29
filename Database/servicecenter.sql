@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `employee_email` varchar(40) NOT NULL,
   `employee_address` varchar(100) NOT NULL,
   PRIMARY KEY (`employee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `employee`
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `type` varchar(10) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
