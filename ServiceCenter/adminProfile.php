@@ -79,7 +79,7 @@ if (isset($_GET['logout'])) {
 
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="big-heading">Do your Vechicle require a Checkup?</h1>
+          <h1 class="big-heading">Build Your Team!</h1>
           <button type="button" class="btn btn-dark btn-lg" style="margin-top: 3%;" id="add_Employee"><i class="fas fa-tools" style="margin-right: 4px;"></i> Add new Employee</button>
         </div>
 

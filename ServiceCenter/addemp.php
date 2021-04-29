@@ -38,7 +38,7 @@ require 'config/connect.php';
 
 <body>
 
-    <div class="container">
+    <div class="box">
 
         <h5>Employee Registeration</h5>
         <form id="emp_reg_form">
@@ -67,6 +67,7 @@ require 'config/connect.php';
             <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="reg_emp">Submit!</button>
 
         </form>
+
     </div>
 
 

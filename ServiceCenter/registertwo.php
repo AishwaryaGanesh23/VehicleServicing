@@ -53,7 +53,7 @@ require 'config/connect.php';
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="vehicle_reg_number" placeholder="Vehicle Registration Number " name="vehicle-reg-number" required />
-                    <span id="regnumError" style="color:white">(eg GA/03/AE/1783)</span>
+                    <span id="regnumError" style="color:black">(eg GA/03/AE/1783)</span>
                 </div>
 
                 <button type="submit" class="btn btn-block btn-success btn-lg" name="" id="submit">Submit!</button>

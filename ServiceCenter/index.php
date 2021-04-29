@@ -108,7 +108,6 @@ if (isset($_SESSION['email'])) {
 
       <span class="new_user"><a href="registerone.php">New Here? Click to register!</a></span>
       </br>
-      <!-- <span class=""><a href="" data-toggle="modal" data-target="#passwordModal">Forgot password?</a></span> -->
 
       <span class="red" id="loginerrmsg"><?php echo @$msg; ?></span>
 
